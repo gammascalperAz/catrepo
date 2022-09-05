@@ -1,0 +1,32 @@
+{
+    "executionRoleArn": "arn:aws:iam::282344936365:role/ecsTaskExecutionRole",
+    "containerDefinitions": [
+        {
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/fargate/service/cat-app",
+                    "awslogs-region": "eu-west-1",
+                    "awslogs-stream-prefix": "fargate"
+                }
+            },
+            "portMappings": [
+                {
+                    "hostPort": 7000,
+                    "protocol": "tcp",
+                    "containerPort": 7000
+                }
+            ],
+            "image": "282344936365.dkr.ecr.eu-west-1.amazonaws.com/js-repo:f772e63af90ecaa994ccfd8551ec833d9d51b682",
+            "name": "cat-app"
+        }
+    ],
+    "memory": "512",
+    "family": "cat-app-td",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "networkMode": "awsvpc",
+    "cpu": "256"
+   
+}
